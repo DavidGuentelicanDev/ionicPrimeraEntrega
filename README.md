@@ -1,4 +1,4 @@
-Primera entrega del curos Programación de Aplicaciones Móviles, DUOC UC 2024
+Primera entrega del curso Programación de Aplicaciones Móviles, DUOC UC 2024
 La aplicación consiste en:
 1. Login
 2. Registro de usuario
