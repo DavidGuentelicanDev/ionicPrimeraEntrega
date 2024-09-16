@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="barra">
+    <ion-title>Cambio de Contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="background-principal-cambio">
+  <ion-card>
+    <div class="ion-padding">
+      <ion-item class="input" lines="none">
+        <ion-input [(ngModel)]="mdl_contrasenaActual" label="Contraseña actual" labelPlacement="floating" placeholder="Ingrese su contraseña actual" type="password"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top input" lines="none">
+        <ion-input [(ngModel)]="mdl_contrasenaNueva" label="Contraseña nueva" labelPlacement="floating" placeholder="Ingrese su nueva contraseña" type="password"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top input" lines="none">
+        <ion-input [(ngModel)]="mdl_contrasenaConfirmar" label="Confirmar contraseña" labelPlacement="floating" placeholder="Confirme su nueva contraseña" type="password"></ion-input>
+      </ion-item>
+      <ion-button (click)="cambiarContrasena()" expand="block" shape="round" class="ion-margin-top" color="tertiary">
+        <ion-spinner *ngIf="spinnerVisible" name="bubbles"></ion-spinner>
+        <span *ngIf="!spinnerVisible">Cambiar Contraseña</span>
+      </ion-button>
+    </div>
+  </ion-card>
+
+  <!--toast-->
+  <ion-toast
+    class="toast-message"
+    [isOpen]="isToastOpen"
+    [message]="mensaje"
+    [duration]="duracion"
+    [color]="color"
+    (didDismiss)="setOpen(false)">
+  </ion-toast>
+</ion-content>

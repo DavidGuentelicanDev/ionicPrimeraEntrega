@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="barra">
+    <ion-title>ECD</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="background-principal-cambio">
+  <!--spinner de recarga-->
+  <div *ngIf="spinnerRecarga" class="spinner-superpuesto">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <!--logo centrado sobre el card-->
+  <div class="logo-container ion-margin-top">
+    <img src="assets/images/libros.avif" alt="Logo" class="logo">
+  </div>
+
+  <ion-card>
+    <div class="ion-padding">
+      <ion-item class="input" lines="none">
+        <ion-input [(ngModel)]="mdl_usuario" label="Usuario" labelPlacement="floating" placeholder="Ingrese su usuario"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top input" lines="none">
+        <ion-input [(ngModel)]="mdl_contrasena" label="Contraseña" labelPlacement="floating" placeholder="Ingrese su contraseña" type="password"></ion-input>
+      </ion-item>
+      <ion-button (click)="logueo()" expand="block" shape="round" class="ion-margin-top" color="tertiary">
+        <ion-spinner *ngIf="spinnerVisible" name="bubbles"></ion-spinner>
+        <span *ngIf="!spinnerVisible">Ingresar</span>
+      </ion-button>
+      <ion-button (click)="registroUsuario()" expand="block" shape="round" class="ion-margin-top" fill="clear" color="dark">Registra tu usuario</ion-button>
+    </div>
+  </ion-card>
+
+  <!--toast-->
+  <ion-toast
+    class="toast-message"
+    [isOpen]="isToastOpen"
+    [message]="mensaje"
+    [duration]="duracion"
+    [color]="color"
+    (didDismiss)="setOpen(false)">
+  </ion-toast>
+</ion-content>

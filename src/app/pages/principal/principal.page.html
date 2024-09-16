@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="barra">
+    <ion-title>ECD</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="cambioContrasena()">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <ion-button (click)="cerrarSesion()">
+        <ion-icon slot="icon-only" name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="background-principal-cambio ion-padding">
+  <!--spinner de recarga-->
+  <div *ngIf="spinnerRecarga" class="spinner-superpuesto">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  
+  <!--card con datos de usuario-->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Bienvenido/a {{ nombreActual }}</ion-card-title>
+      <ion-card-subtitle style="font-weight: bold;">Usuario: {{ usuarioActual }}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p>RUT: {{ rutActual }}</p>
+      <p>Correo electrónico: {{ correoActual }}</p>
+      <!--<p>Contraseña: {{ contrasenaActual }}</p>-->
+    </ion-card-content>
+  </ion-card>
+
+  <!--card con información random-->
+  <ion-card class="tarjeta">
+    <ion-card-header>
+      <ion-card-title>Libro que estoy leyendo</ion-card-title>
+      <br>
+      <img class="tarjeta-imagen" alt="Libro leyendo" src="assets/images/la-religion-y-la-nada.webp" />
+      <br>
+      <ion-card-subtitle style="font-weight: bold;">La Religión y la Nada, Nishitani Keiji</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content class="tarjeta-texto">
+      "La Religión y la Nada" de Nishitani Keiji es una obra fundamental en la filosofía existencial y la religión comparada. Nishitani, filósofo japonés y miembro de la escuela de Kyoto, examina la relación entre la religión y el vacío existencial, explorando cómo distintas tradiciones religiosas abordan el concepto de nada o vacío. A través de un análisis profundo de la filosofía zen, el budismo y el cristianismo, Nishitani investiga cómo la experiencia del vacío puede conducir a una comprensión más profunda de la existencia y la trascendencia. La obra ofrece una reflexión incisiva sobre el significado de la vida y la espiritualidad en un contexto moderno, destacando la relevancia de las preguntas filosóficas fundamentales en la búsqueda de sentido.
+    </ion-card-content>
+
+    <!--barra de botones al final de la tarjeta-->
+    <ion-footer>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="meGusta()">
+            <ion-icon slot="icon-only" [name]="iconoMeGusta" [color]="colorMeGusta"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button (click)="guardar()">
+            <ion-icon slot="icon-only" [name]="iconoGuardar" color="dark"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-card>
+
+  <!--toast-->
+  <ion-toast
+    class="toast-message"
+    [isOpen]="isToastOpen"
+    [message]="mensaje"
+    [duration]="duracion"
+    [color]="color"
+    (didDismiss)="setOpenToast(false)">
+  </ion-toast>
+
+  <!--alert-->
+  <ion-alert
+    [isOpen]="isAlertOpen"
+    header="Cerrar sesión"
+    message="¿Deseas cerrar sesión y salir de la aplicación?"
+    [buttons]="alertButtons"
+    (didDismiss)="setOpenAlert(false)">
+  </ion-alert>
+</ion-content>

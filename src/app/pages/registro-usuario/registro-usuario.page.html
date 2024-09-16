@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="barra">
+    <ion-title>Registro de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="background-principal-cambio">
+  <ion-card>
+    <div class="ion-padding">
+      <h5>Datos personales</h5>
+      <ion-item class="input" lines="none">
+        <ion-input [(ngModel)]="mdl_nombre" label="Nombre" labelPlacement="floating" placeholder="Ingrese su nombre"></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input [(ngModel)]="mdl_rut" label="RUT" labelPlacement="floating" placeholder="Ingrese su RUT, ej.: 12345678-K"></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input [(ngModel)]="mdl_correo" label="Correo electrónico" labelPlacement="floating" placeholder="Ingrese su correo electrónico, ej.: correo@correo.com"></ion-input>
+      </ion-item>
+      <br>
+      <h5>Datos de usuario</h5>
+      <ion-item class="input" lines="none">
+        <ion-input [(ngModel)]="mdl_usuario" label="Usuario" labelPlacement="floating" placeholder="Ingrese su nombre de usuario"></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input [(ngModel)]="mdl_contrasena" label="Contraseña" labelPlacement="floating" placeholder="Ingrese su contraseña" type="password"></ion-input>
+      </ion-item>
+      <ion-item class="input" lines="none">
+        <ion-input [(ngModel)]="mdl_confirmarContrasena" label="Confirmar contraseña" labelPlacement="floating" placeholder="Ingrese nuevamente su contraseña para confirmar" type="password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button (click)="registrarse()" expand="block" shape="round" class="ion-margin-top" color="tertiary">
+        <ion-spinner *ngIf="spinnerVisible" name="bubbles"></ion-spinner>
+        <span *ngIf="!spinnerVisible">Registrarse</span>
+      </ion-button>
+    </div>
+  </ion-card>
+
+  <!--toast-->
+  <ion-toast
+    class="toast-message"
+    [isOpen]="isToastOpen"
+    [message]="mensaje"
+    [duration]="duracion"
+    [color]="color"
+    (didDismiss)="setOpen(false)">
+  </ion-toast>
+</ion-content>
